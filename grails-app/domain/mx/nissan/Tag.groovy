@@ -12,7 +12,8 @@ class Tag implements Serializable{
 
   static mapping = {
     table 'TAG'
-    id (generator:'sequence', params:[sequence:'TAG_SEQ'])
+    id generator: 'identity'
+    //id (generator:'org.hibernate.id.enhanced.SequenceStyleGenerator', params:[sequence:'TAG_SEQ'])
   }
 
   String toString() {

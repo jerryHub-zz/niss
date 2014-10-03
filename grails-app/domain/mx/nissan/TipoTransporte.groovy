@@ -16,7 +16,8 @@ class TipoTransporte implements Serializable{
 
   static mapping = {
     table 'TIPO_TRANSPORTE'
-    id (generator:'sequence', params:[sequence:'TIPO_TRANSP_SEQ'])
+    id generator: 'identity'
+    //id (generator:'org.hibernate.id.enhanced.SequenceStyleGenerator', params:[sequence:'TIPO_TRANSP_SEQ'])
   }
 
   String toString() {

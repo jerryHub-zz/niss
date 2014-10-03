@@ -8,7 +8,8 @@ class Dock implements Serializable{
 
   static mapping = {
     table 'DOCK'
-    id (generator:'sequence', params:[sequence:'DOCK_SEQ'])
+    //id (generator:'org.hibernate.id.enhanced.SequenceStyleGenerator', params:[sequence:'DOCK_SEQ'])
+    id generator: 'identity'
   }
 
   String toString() {

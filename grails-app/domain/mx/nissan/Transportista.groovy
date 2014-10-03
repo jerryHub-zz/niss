@@ -11,7 +11,8 @@ class Transportista implements Serializable{
 
   static mapping = {
     table 'TRANSPORTISTA'
-    id (generator:'sequence', params:[sequence:'TRANSPORT_SEQ'])
+    id generator: 'identity'
+    //id (generator:'org.hibernate.id.enhanced.SequenceStyleGenerator', params:[sequence:'TRANSPORT_SEQ'])
   }
 
   String toString() {

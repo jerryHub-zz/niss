@@ -8,7 +8,8 @@ class Rampa implements Serializable{
 
   static mapping = {
     table 'RAMPA'
-    id (generator:'sequence', params:[sequence:'RAMPA_SEQ'])
+    id generator: 'identity'
+    //id (generator:'org.hibernate.id.enhanced.SequenceStyleGenerator', params:[sequence:'RAMPA_SEQ'])
   }
 
   String toString() {

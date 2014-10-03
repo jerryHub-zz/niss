@@ -13,8 +13,9 @@ class Operador implements Serializable{
 
   static mapping = {
     table 'OPERADOR'
-    identificacion column: 'IDENTIFICACION', sqlType : 'clob'
-    id (generator:'sequence', params:[sequence:'OPERADOR_SEQ'])
+    //identificacion column: 'IDENTIFICACION', sqlType : 'raw'
+    //id (generator:'org.hibernate.id.enhanced.SequenceStyleGenerator', params:[sequence:'OPERADOR_SEQ'])
+    id generator: 'identity'
   }
 
   String toString() {

@@ -2,7 +2,7 @@ package mx.nissan
 
 class Proveedor implements Serializable{
 
-  String id
+  String idProveedor
   String nombre
   String ubicacion
 
@@ -12,6 +12,7 @@ class Proveedor implements Serializable{
 
   static mapping = {
     table 'PROVEEDOR'
+    id generator: 'identity'
   }
 
   String toString() {

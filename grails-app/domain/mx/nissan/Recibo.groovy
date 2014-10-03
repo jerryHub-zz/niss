@@ -12,6 +12,7 @@ class Recibo implements Serializable{
 
   static mapping = {
     table 'RECIBO'
-    id (generator:'sequence', params:[sequence:'RECIBO_SEQ'])
+    id generator: 'identity'
+    //id (generator:'org.hibernate.id.enhanced.SequenceStyleGenerator', params:[sequence:'RECIBO_SEQ'])
   }
 }
