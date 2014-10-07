@@ -5,6 +5,16 @@ class ShowDiagramController{
   def drawPathService
 
   def index(){
+    def historyTags = HistorialAntena.list()
+    def orderedHistoryTags = []
+    historyTags.groupBy{ it.tag }.each{ k, v ->
+      def tagData = [
+        tag: k, history: v.sort{ it.fecha }
+      ]
+      orderedHistoryTags.push(tagData)
+    }
+    println orderedHistoryTags
+    [ orderedHistoryTags: orderedHistoryTags]
   }
 
   def show(){
