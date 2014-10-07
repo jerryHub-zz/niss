@@ -59,6 +59,10 @@ grails.exceptionresolver.params.exclude = ['password']
 // configure auto-caching of queries by default (if false you can cache individual queries with 'cache: true')
 grails.hibernate.cache.queries = false
 
+//grails.assets.less.compile = 'less4j'
+//grails.assets.plugin."twitter-bootstrap".excludes = ["**/*.less"]
+//grails.assets.plugin."twitter-bootstrap".includes = ["bootstrap.less"]
+
 environments {
     development {
         grails.logging.jul.usebridge = true
