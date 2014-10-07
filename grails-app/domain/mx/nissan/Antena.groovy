@@ -1,25 +1,28 @@
 package mx.nissan
 
-class Tag implements Serializable{
+class Antena implements Serializable{
 
-  String numTag
-  Boolean asignado
-  Transportista transportista
-  TipoTransporte tipoTransporte
+  Integer numAntena
+  String ip
+  String localizacion
+  BigDecimal posicionX
+  BigDecimal posicionY
   Date dateCreated
   Date lastUpdated
 
   static constraints = {
+    posicionX nullable: true
+    posicionY nullable: true
   }
 
   static mapping = {
-    table 'TAG'
+    table 'ANTENA'
     id generator: 'identity'
     //id (generator:'org.hibernate.id.enhanced.SequenceStyleGenerator', params:[sequence:'TAG_SEQ'])
   }
 
   String toString() {
-    numTag
+    ip
   }
 
 }

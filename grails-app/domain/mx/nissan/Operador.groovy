@@ -6,6 +6,8 @@ class Operador implements Serializable{
   String paterno
   String materno
   String identificacion
+  Date dateCreated
+  Date lastUpdated
 
   static constraints = {
     materno nullable: true

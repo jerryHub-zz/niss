@@ -8,6 +8,8 @@ class TipoTransporte implements Serializable{
   BigDecimal alto
   BigDecimal pesoBruto
   BigDecimal capacidad
+  Date dateCreated
+  Date lastUpdated
 
   static constraints = {
     pesoBruto nullable: true

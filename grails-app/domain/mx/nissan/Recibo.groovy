@@ -6,6 +6,8 @@ class Recibo implements Serializable{
   Transportista transportista
   TipoTransporte tipoTransporte
   Operador operador
+  Date dateCreated
+  Date lastUpdated
 
   static constraints = {
   }

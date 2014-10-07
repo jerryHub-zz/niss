@@ -3,6 +3,8 @@ package mx.nissan
 class Dock implements Serializable{
 
   String descripcion
+  Date dateCreated
+  Date lastUpdated
   static constraints = {
   }
 

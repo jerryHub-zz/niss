@@ -4,6 +4,8 @@ class Transportista implements Serializable{
 
   String nombre
   String ubicacion
+  Date dateCreated
+  Date lastUpdated
 
   static constraints = {
     ubicacion nullable: true

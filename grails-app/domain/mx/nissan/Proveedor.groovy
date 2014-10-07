@@ -5,6 +5,8 @@ class Proveedor implements Serializable{
   String idProveedor
   String nombre
   String ubicacion
+  Date dateCreated
+  Date lastUpdated
 
   static constraints = {
     ubicacion nullable: true
