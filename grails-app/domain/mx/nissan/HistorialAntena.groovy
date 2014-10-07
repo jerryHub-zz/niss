@@ -2,12 +2,13 @@ package mx.nissan
 
 class HistorialAntena implements Serializable{
 
+  Date dateCreated
+  Date lastUpdated
 
   Antena antena
   Date fecha
-  String localizacion
-  Date dateCreated
-  Date lastUpdated
+  Tag tag
+
 
   static constraints = {
   }
@@ -15,6 +16,7 @@ class HistorialAntena implements Serializable{
   static mapping = {
     table 'HISTORIAL_ANTENA'
     id generator: 'identity'
+    antena column: 'ID_ANTENA'
     //id (generator:'org.hibernate.id.enhanced.SequenceStyleGenerator', params:[sequence:'TAG_SEQ'])
   }
 

@@ -4,8 +4,10 @@ class ShowDiagramController{
 
   def drawPathService
 
+  def index(){
+  }
+
   def show(){
-    println "Hola entrando en el controller"
   }
 
   def getPath(){
