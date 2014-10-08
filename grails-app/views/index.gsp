@@ -3,9 +3,6 @@
 	<head>
 		<meta name="layout" content="main"/>
 		<title>Nissan</title>
-		<style type="text/css" media="screen">
-
-		</style>
 	</head>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
