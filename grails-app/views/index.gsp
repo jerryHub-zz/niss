@@ -10,13 +10,20 @@
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="leftBar" role="complementary">
+      <h1>Actividades</h1>
+      <ul>
+        <li>
+          <g:link controller="ShowDiagram">Recorridos</g:link>
+        </li>
+      </ul>
+      <br/>
 			<h1>Catalogos</h1>
 			<ul>
         <li>
             <g:link controller="Antena">Antena</g:link>
         </li>
         <li>
-            <g:link controller="Dock">Historial Antena</g:link>
+            <g:link controller="HistorialAntena">Historial Antena</g:link>
         </li>
         <li>
             <g:link controller="Dock">Dock</g:link>
@@ -45,7 +52,6 @@
 			</ul>
 		</div>
 		<div class="page-body" role="main">
-			<h1>Titulo</h1>
 
 			</div>
 		</div>
