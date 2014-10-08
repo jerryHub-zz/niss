@@ -5,7 +5,11 @@ class Rampa implements Serializable{
   String descripcion
   Date dateCreated
   Date lastUpdated
+
   static constraints = {
+    descripcion()
+    dateCreated()
+    lastUpdated()
   }
 
   static mapping = {

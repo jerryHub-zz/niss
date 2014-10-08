@@ -10,9 +10,10 @@ class Tag implements Serializable{
   Date lastUpdated
 
   static constraints = {
+    numTag()
+    asignado nullable: true
     transportista nullable: true
     tipoTransporte nullable: true
-    asignado nullable: true
   }
 
   static mapping = {

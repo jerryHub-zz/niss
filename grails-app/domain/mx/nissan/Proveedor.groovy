@@ -12,6 +12,8 @@ class Proveedor implements Serializable{
     idProveedor()
     nombre()
     ubicacion nullable: true
+    dateCreated()
+    lastUpdated()
   }
 
   static mapping = {

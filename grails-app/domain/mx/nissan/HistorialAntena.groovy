@@ -11,6 +11,9 @@ class HistorialAntena implements Serializable{
 
 
   static constraints = {
+    antena()
+    fecha()
+    tag()
   }
 
   static mapping = {

@@ -12,6 +12,10 @@ class TipoTransporte implements Serializable{
   Date lastUpdated
 
   static constraints = {
+    nombre()
+    ancho()
+    largo()
+    alto()
     pesoBruto nullable: true
     capacidad nullable: true
   }

@@ -8,6 +8,7 @@ class Transportista implements Serializable{
   Date lastUpdated
 
   static constraints = {
+    nombre()
     ubicacion nullable: true
   }
 

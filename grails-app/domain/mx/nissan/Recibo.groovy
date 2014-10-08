@@ -10,6 +10,12 @@ class Recibo implements Serializable{
   Date lastUpdated
 
   static constraints = {
+    documento()
+    transportista()
+    tipoTransporte()
+    operador()
+    dateCreated()
+    lastUpdated()
   }
 
   static mapping = {
