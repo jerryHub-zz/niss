@@ -1,5 +1,6 @@
 package mx.nissan.service
 
+import mx.nissan.*
 import sun.awt.image.FileImageSource
 
 import java.nio.file.Files
@@ -36,6 +37,34 @@ class DrawPathService{
     imageInByte
   }
 
+  def drawTagHistory(def imgPath, def numTag){
+
+
+    def tag = Tag.findByNumTag(numTag)
+    def historyTag = HistorialAntena.findAllByTag(tag)
+
+    def listPoints = []
+    historyTag.sort{ it.fecha }.eachWithIndex{ historyLog, i ->
+      if(i < historyTag.size() - 1){
+        def pointB = historyTag[i + 1]
+        def points =  [a: [ x: historyLog.antena.posicionX.intValue(), y: historyLog.antena.posicionY.intValue()],
+          b: [ x: pointB.antena.posicionX.intValue(), y: pointB.antena.posicionY.intValue()] ]
+        listPoints.push(points)
+      }
+    }
+
+    def mazeImage = new BufferedImage(IMG_WIDTH, IMG_HEIGTH , BufferedImage.TYPE_INT_RGB)
+    def g2 = initializeGraphics(imgPath, mazeImage)
+    drawListOfPoints(g2, listPoints)
+    def baos = new ByteArrayOutputStream()
+    ImageIO.write( mazeImage, "png", baos)
+    baos.flush()
+    byte[] imageInByte = baos.toByteArray()
+    baos.close()
+
+    imageInByte
+  }
+
 
   def initializeGraphics(def imgPath, def mazeImage){
     def g2 = mazeImage.createGraphics()
@@ -48,6 +77,7 @@ class DrawPathService{
 
   def drawListOfPoints(def g2, def pointsList){
     g2.setColor(Color.RED)
+    g2.setStroke(new BasicStroke(5))
     pointsList.each{ points ->
       g2.drawLine(points.a.x, points.a.y, points.b.x, points.b.y)
     }

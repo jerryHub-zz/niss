@@ -8,7 +8,7 @@
   <g:form align="center" >
     <h1>Planta Nissan</h1>
 
-    <img src="${createLink(controller: 'showDiagram', action: 'getPath')}" width="800" height="500">
+    <img src="${createLink(controller: 'showDiagram', action: 'getPath', id:tag)}" width="800" height="500">
   </g:form>
 </body>
 </html>
