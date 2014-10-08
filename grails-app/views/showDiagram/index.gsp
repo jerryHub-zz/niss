@@ -94,7 +94,7 @@
         <br />
           <g:each var="historyTag" in="${orderedHistoryTags}">
             <div>
-              <strong>Tag: </strong><g:link >${historyTag.tag.numTag}</g:link>
+              <strong>Tag: </strong><g:link controller="showDiagram" action="show" id="${historyTag.tag.numTag}" target="_blank">${historyTag.tag.numTag}</g:link>
               <table>
                 <thead>
                   <th>Fecha</th>

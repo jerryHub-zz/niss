@@ -17,14 +17,19 @@ class ShowDiagramController{
     [ orderedHistoryTags: orderedHistoryTags]
   }
 
-  def show(){
+  def show(String id){
+    [ tag: id]
   }
 
-  def getPath(){
+  def getPath(String id){
+    def numTag = id
 
     def imgPath = request.getSession().getServletContext().getRealPath("/images/planta.png")
-    def img = drawPathService.drawTestPath(imgPath)
 
+    //Test draw
+    //def img = drawPathService.drawTestPath(imgPath)
+
+    def img = drawPathService.drawTagHistory(imgPath, numTag)
     //...
     response.setHeader('Content-length', img.length.toString())
     response.contentType = 'image/png' // or the appropriate image content type
