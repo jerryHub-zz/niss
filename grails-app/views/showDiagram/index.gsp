@@ -97,16 +97,16 @@
               <strong>Tag: </strong><g:link >${historyTag.tag.numTag}</g:link>
               <table>
                 <thead>
-                  <th>Fecha</th>
-                  <th>IP Antena</th>
-                  <th>Localización</th>
+                  <th style="width:100px">Fecha</th>
+                  <th style="width:100px">IP Antena</th>
+                  <th style="width:200px">Localización</th>
                 </thead>
                 <tbody>
                   <g:each var="history" in="${historyTag.history}">
                     <tr>
-                      <td>${history?.fecha}</td>
-                      <td>${history?.antena.ip}</td>
-                      <td>${history?.antena.localizacion}</td>
+                      <td style="width:100px">${history?.fecha}</td>
+                      <td style="width:100px">${history?.antena.ip}</td>
+                      <td style="width:100px">${history?.antena.localizacion}</td>
                     </tr>
                   </g:each>
                 </tbody>

@@ -20,11 +20,11 @@ class DrawPathService{
     def mazeImage = new BufferedImage(IMG_WIDTH, IMG_HEIGTH , BufferedImage.TYPE_INT_RGB)
     def g2 = initializeGraphics(imgPath, mazeImage)
     def testPoints = [
-      [ a: [x: 145, y:485], b: [ x: 155, y: 370] ],
-      [ a: [x: 155, y: 370], b: [ x: 257, y: 370] ],
-      [ a: [x: 257, y: 370], b: [ x: 515, y: 390] ],
-      [ a: [x: 515, y: 390], b: [ x: 497, y: 303] ],
-      [ a: [x: 497, y: 303], b: [ x: 526, y: 335] ]
+      [ a: [x: 139, y:477], b: [ x: 144, y: 358] ],
+      [ a: [x: 144, y: 358], b: [ x: 250, y: 357] ],
+      [ a: [x: 250, y: 357], b: [ x: 510, y: 380] ],
+      [ a: [x: 510, y: 380], b: [ x: 513, y: 315] ],
+      [ a: [x: 513, y: 315], b: [ x: 653, y: 444] ]
     ]
     drawListOfPoints(g2, testPoints)
     def baos = new ByteArrayOutputStream()
