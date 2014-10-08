@@ -13,7 +13,7 @@ class ShowDiagramController{
       ]
       orderedHistoryTags.push(tagData)
     }
-    println orderedHistoryTags
+    //println orderedHistoryTags
     [ orderedHistoryTags: orderedHistoryTags]
   }
 
