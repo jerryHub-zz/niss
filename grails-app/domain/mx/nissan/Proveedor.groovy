@@ -9,6 +9,8 @@ class Proveedor implements Serializable{
   Date lastUpdated
 
   static constraints = {
+    idProveedor()
+    nombre()
     ubicacion nullable: true
   }
 

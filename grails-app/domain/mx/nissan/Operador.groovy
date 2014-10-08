@@ -10,7 +10,10 @@ class Operador implements Serializable{
   Date lastUpdated
 
   static constraints = {
+    nombre()
+    paterno()
     materno nullable: true
+    identificacion()
   }
 
   static mapping = {

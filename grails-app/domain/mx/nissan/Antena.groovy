@@ -11,8 +11,13 @@ class Antena implements Serializable{
   Date lastUpdated
 
   static constraints = {
+    numAntena()
+    ip()
+    localizacion()
     posicionX nullable: true
     posicionY nullable: true
+    dateCreated()
+    lastUpdated()
   }
 
   static mapping = {
