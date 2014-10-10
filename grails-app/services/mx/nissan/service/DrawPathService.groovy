@@ -38,8 +38,6 @@ class DrawPathService{
   }
 
   def drawTagHistory(def imgPath, def numTag){
-
-
     def tag = Tag.findByNumTag(numTag)
     def historyTag = HistorialAntena.findAllByTag(tag)
 
@@ -48,13 +46,14 @@ class DrawPathService{
       if(i < historyTag.size() - 1){
         def pointB = historyTag[i + 1]
         def points =  [a: [ x: historyLog.antena.posicionX.intValue(), y: historyLog.antena.posicionY.intValue()],
-          b: [ x: pointB.antena.posicionX.intValue(), y: pointB.antena.posicionY.intValue()] ]
+          b: [ x: pointB.antena.posicionX.intValue(), y: pointB.antena.posicionY.intValue()], antena: historyLog.antena.localizacion ]
         listPoints.push(points)
       }
     }
 
     def mazeImage = new BufferedImage(IMG_WIDTH, IMG_HEIGTH , BufferedImage.TYPE_INT_RGB)
     def g2 = initializeGraphics(imgPath, mazeImage)
+
     drawListOfPoints(g2, listPoints)
     def baos = new ByteArrayOutputStream()
     ImageIO.write( mazeImage, "png", baos)
@@ -77,9 +76,18 @@ class DrawPathService{
 
   def drawListOfPoints(def g2, def pointsList){
     g2.setColor(Color.RED)
-    g2.setStroke(new BasicStroke(5))
+    g2.setStroke(new BasicStroke(3,1,BasicStroke.JOIN_MITER))
+    def y = 10
+    def count = 1
+    println pointsList.size
     pointsList.each{ points ->
+
+      g2.setColor(Color.RED)
       g2.drawLine(points.a.x, points.a.y, points.b.x, points.b.y)
+      g2.setColor(Color.BLUE)
+      g2.drawString(count + "- Punto"+ points.antena, 100, y);
+      y+=15
+      count++
     }
   }
 
