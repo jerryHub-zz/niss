@@ -90,7 +90,17 @@
     <div id="page-body">
       <h1>Planta Nissan</h1>
       <h3>Entrada </h3>
-      <div >
+      <br/>
+      <br/>
+      <div>
+        <label>Documento</label>
+        <g:textField name="myField" value="${myValue}" />
+        <g:actionSubmit value="Buscar" action="buscar" />
+      </div>
+      <br/>
+      <br/>
+      <div>
+
         <table widt="600px">
           <thead>
           </thead>
@@ -98,19 +108,62 @@
             <tr>
               <td>Transportista</td>
               <td>
-                 <input type="text" name="idTransportista" />
+              <g:select name="user.company.id"
+                        from="${Company.list()}"
+                        value="${user?.company.id}"
+                        optionKey="id" />
               </td>
-            </tr>
-            <tr>
               <td>Tipo Transporte</td>
               <td>
                  <input type="text" name="idTransportista" />
               </td>
             </tr>
             <tr>
-              <td>Tipo Transporte</td>
+              <td>Operador</td>
               <td>
                  <input type="text" name="idTransportista" />
+              </td>
+              <td>Tractor</td>
+              <td>
+                 <input type="text" name="idTransportista" />
+              </td>
+            </tr>
+            <tr colspan="2">
+              <td>Placas</td>
+              <td>
+                 <input type="text" name="idTransportista" />
+              </td>
+            </tr>
+            <tr>
+              <td>Caja 1</td>
+              <td>
+                 <input type="text" name="idTransportista" />
+              </td>
+              <td>Caja 2</td>
+              <td>
+                 <input type="text" name="idTransportista" />
+              </td>
+            </tr>
+            <tr>
+              <td>Tag asignado en la planta</td>
+              <td>
+                 <input type="text" name="tag" />
+              </td>
+            </tr>
+            <tr>
+              <td>Hora Entrda </td>
+              <td>
+                 <input type="text" name="tag" />
+              </td>
+              <td>Hora Salida </td>
+              <td>
+                 <input type="text" name="tag" />
+              </td>
+            </tr>
+            <tr>
+              <td>Cargar documento</td>
+              <td>
+                <input type="text" name="tag" />
               </td>
             </tr>
           </tbody>
