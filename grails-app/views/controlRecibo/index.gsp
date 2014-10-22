@@ -108,6 +108,10 @@
             <tr>
               <td>Transportista</td>
               <td>
+                <g:select optionKey="nombre" optionValue="nombre"
+                          name="transportista.nombre" from="${listaTransportista}" />
+
+
               </td>
               <td>Tipo Transporte</td>
               <td>
