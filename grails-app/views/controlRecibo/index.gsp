@@ -94,8 +94,8 @@
       <br/>
       <div>
         <label>Documento</label>
-        <g:textField name="myField" value="${myValue}" />
-        <g:actionSubmit value="Buscar" action="buscar" />
+        <g:textField id="documento" name="myField" value="${myValue}" />
+        <button onclick="<g:remoteFunction controller='controlRecibo' action='searchDocument' update='documento'/>">Buscar Documento</button>
       </div>
       <br/>
       <br/>
@@ -108,10 +108,6 @@
             <tr>
               <td>Transportista</td>
               <td>
-              <g:select name="user.company.id"
-                        from="${Company.list()}"
-                        value="${user?.company.id}"
-                        optionKey="id" />
               </td>
               <td>Tipo Transporte</td>
               <td>

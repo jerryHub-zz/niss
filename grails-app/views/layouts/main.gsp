@@ -24,7 +24,9 @@
 		</div>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-		<g:javascript library="application"/>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <g:javascript library="application"/>
+
 		<r:layoutResources />
 	</body>
 </html>
