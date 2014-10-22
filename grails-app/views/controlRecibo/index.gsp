@@ -89,15 +89,20 @@
        ${ remoteFunction(action:'searchDocument',  params:'\'strDocument=\' + strDoc', onSuccess: 'loadDocument(data)') }
       }
       function loadDocument(data){
-        jQuery('#tag').val(data.tag);
-        jQuery('#transportista').val(data.transportista.nombre);
-        jQuery('#tipoTransporte').val(data.tipoTransporte.nombre);
-        jQuery('#operador').val(data.operador.nombre);
-        jQuery('#operador').val(data.operador.nombre);
-        jQuery('#placas').val(data.placas);
-        jQuery('#caja1').val(data.caja1);
-        jQuery('#caja2').val(data.caja2);
-        jQuery('#tractor').val(data.tractor);
+        if(data.tag != null){
+          jQuery('#tag').val(data.tag);
+          jQuery('#transportista').val(data.transportista.nombre);
+          jQuery('#tipoTransporte').val(data.tipoTransporte.nombre);
+          jQuery('#operador').val(data.operador.nombre);
+          jQuery('#operador').val(data.operador.nombre);
+          jQuery('#placas').val(data.placas);
+          jQuery('#caja1').val(data.caja1);
+          jQuery('#caja2').val(data.caja2);
+          jQuery('#tractor').val(data.tractor);
+        }
+      }
+      function cleanForm(){
+        //Limpiar todos los campos de #documentForm
       }
     </script>
     <div class="nav" role="navigation">
@@ -117,7 +122,7 @@
       </div>
       <br/>
       <br/>
-      <div>
+      <div id="documentForm">
 
         <table widt="600px">
           <thead>
