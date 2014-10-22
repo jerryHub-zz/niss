@@ -82,6 +82,24 @@
     </style>
   </head>
   <body>
+    <script>
+      function searchDocument(){
+       var strDoc = jQuery('#strDocument').val();
+       var docData;
+       ${ remoteFunction(action:'searchDocument',  params:'\'strDocument=\' + strDoc', onSuccess: 'loadDocument(data)') }
+      }
+      function loadDocument(data){
+        jQuery('#tag').val(data.tag);
+        jQuery('#transportista').val(data.transportista.nombre);
+        jQuery('#tipoTransporte').val(data.tipoTransporte.nombre);
+        jQuery('#operador').val(data.operador.nombre);
+        jQuery('#operador').val(data.operador.nombre);
+        jQuery('#placas').val(data.placas);
+        jQuery('#caja1').val(data.caja1);
+        jQuery('#caja2').val(data.caja2);
+        jQuery('#tractor').val(data.tractor);
+      }
+    </script>
     <div class="nav" role="navigation">
       <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
@@ -94,8 +112,8 @@
       <br/>
       <div>
         <label>Documento</label>
-        <g:textField id="documento" name="myField" value="${myValue}" />
-        <button onclick="<g:remoteFunction controller='controlRecibo' action='searchDocument' update='documento'/>">Buscar Documento</button>
+        <g:textField id="strDocument" name="strDocument" />
+        <button onclick="searchDocument()">Buscar Documento</button>
       </div>
       <br/>
       <br/>
@@ -108,62 +126,62 @@
             <tr>
               <td>Transportista</td>
               <td>
-                <g:select optionKey="nombre" optionValue="nombre"
-                          name="transportista.nombre" from="${listaTransportista}" />
-
+                <!--<g:select optionKey="nombre" optionValue="nombre"
+                          name="transportista.nombre" from="${listaTransportista}" />-->
+                <input type="text" name="transportista" id="transportista" readonly/>
 
               </td>
               <td>Tipo Transporte</td>
               <td>
-                 <input type="text" name="idTransportista" />
+                 <input type="text" name="tipoTransporte" id="tipoTransporte" readonly/>
               </td>
             </tr>
             <tr>
               <td>Operador</td>
               <td>
-                 <input type="text" name="idTransportista" />
+                 <input type="text" name="operador" id="operador" readonly />
               </td>
               <td>Tractor</td>
               <td>
-                 <input type="text" name="idTransportista" />
+                 <input type="text" name="tractor" id="tractor" readonly/>
               </td>
             </tr>
             <tr colspan="2">
               <td>Placas</td>
               <td>
-                 <input type="text" name="idTransportista" />
+                 <input type="text" name="placas" id="placas"  readonly/>
               </td>
             </tr>
             <tr>
               <td>Caja 1</td>
               <td>
-                 <input type="text" name="idTransportista" />
+                 <input type="text" name="caja1" id="caja1" readonly />
               </td>
               <td>Caja 2</td>
               <td>
-                 <input type="text" name="idTransportista" />
+                 <input type="text" name="caja2" id="caja2" readonly />
               </td>
             </tr>
             <tr>
               <td>Tag asignado en la planta</td>
               <td>
-                 <input type="text" name="tag" />
+                 <input type="text" name="tag" id="tag"  readonly/>
               </td>
             </tr>
             <tr>
               <td>Hora Entrda </td>
               <td>
-                 <input type="text" name="tag" />
+                 <input type="text" name="horaEntrada" id="horaEntrada" />
               </td>
               <td>Hora Salida </td>
               <td>
-                 <input type="text" name="tag" />
+                 <input type="text" name="horaSalida" id="horaSalida"/>
               </td>
             </tr>
             <tr>
               <td>Cargar documento</td>
               <td>
-                <input type="text" name="tag" />
+                <input type="file" name="identificacion" id="identificacion" />
               </td>
             </tr>
           </tbody>
