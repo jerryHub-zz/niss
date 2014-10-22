@@ -95,7 +95,8 @@
       <div>
         <label>Documento</label>
         <g:textField name="myField" value="${myValue}" />
-        <g:actionSubmit value="Buscar" action="buscar" />
+
+        <button onclick="<g:remoteFunction controller="greeting" action="count" update="greetingBox"/>">Buscar</button>
       </div>
       <br/>
       <br/>
@@ -108,10 +109,10 @@
             <tr>
               <td>Transportista</td>
               <td>
-              <g:select name="user.company.id"
-                        from="${Company.list()}"
-                        value="${user?.company.id}"
-                        optionKey="id" />
+                <g:select optionKey="nombre" optionValue="nombre"
+                          name="transportista.nombre" from="${listaTransportista}" />
+
+
               </td>
               <td>Tipo Transporte</td>
               <td>

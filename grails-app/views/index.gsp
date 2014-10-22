@@ -15,6 +15,9 @@
         <li>
           <g:link controller="Documento">Documentos</g:link>
         </li>
+        <li>
+          <g:link controller="controlRecibo">Entrada / Salida</g:link>
+        </li>
       </ul>
       <br/>
 			<h1>Catalogos</h1>
