@@ -90,6 +90,7 @@
       }
       function loadDocument(data){
         if(data.tag != null){
+          jQuery('#id').val(data.id);
           jQuery('#tag').val(data.tag);
           jQuery('#transportista').val(data.transportista.nombre);
           jQuery('#tipoTransporte').val(data.tipoTransporte.nombre);
@@ -99,10 +100,22 @@
           jQuery('#caja1').val(data.caja1);
           jQuery('#caja2').val(data.caja2);
           jQuery('#tractor').val(data.tractor);
+          jQuery('#horaEntrada').datpicker("setDate", data.horaEntrada);
+          jQuery('#horaEntrada_month').val(1);
+          console.log(data);
         }
       }
       function cleanForm(){
         //Limpiar todos los campos de #documentForm
+          jQuery('#tag').val('');
+          jQuery('#transportista').val('');
+          jQuery('#tipoTransporte').val('');
+          jQuery('#operador').val('');
+          jQuery('#operador').val('');
+          jQuery('#placas').val('');
+          jQuery('#caja1').val('');
+          jQuery('#caja2').val('');
+          jQuery('#tractor').val('');
       }
     </script>
     <div class="nav" role="navigation">
@@ -123,7 +136,8 @@
       <br/>
       <br/>
       <div id="documentForm">
-
+      <g:form controller="controlRecibo">
+        <input type="hidden" name="id" id="id">
         <table widt="600px">
           <thead>
           </thead>
@@ -176,11 +190,13 @@
             <tr>
               <td>Hora Entrda </td>
               <td>
-                 <input type="text" name="horaEntrada" id="horaEntrada" />
+                 <g:datePicker name="horaEntrada" id="horaEntrada" precision="minute" years="${1930..1970}"/>
               </td>
+              </tr>
+              <tr>
               <td>Hora Salida </td>
               <td>
-                 <input type="text" name="horaSalida" id="horaSalida"/>
+                 <g:datePicker name="horaSalida" id="horaSalida"  precision="minute" years="${1930..1970}"/>
               </td>
             </tr>
             <tr>
@@ -192,6 +208,11 @@
           </tbody>
         </table>
       </div>
+      <div>
+         <button onclick="cleanForm()">Limpiar Formulario</button>
+         <g:actionSubmit value="Guardar" action="saveControlRecibo"/>
+      </div>
+      </g:form>
     </div>
   </body>
 </html>
