@@ -100,8 +100,18 @@
           jQuery('#caja1').val(data.caja1);
           jQuery('#caja2').val(data.caja2);
           jQuery('#tractor').val(data.tractor);
-          jQuery('#horaEntrada').datpicker("setDate", data.horaEntrada);
-          jQuery('#horaEntrada_month').val(1);
+          jQuery('#horaEntrada_day').val(data.horaEntrada.horaEntrada_day);
+          jQuery('#horaEntrada_month').val(data.horaEntrada.horaEntrada_month);
+          jQuery('#horaEntrada_year').val(data.horaEntrada.horaEntrada_year);
+          jQuery('#horaEntrada_hour').val(data.horaEntrada.horaEntrada_hour);
+          jQuery('#horaEntrada_minute').val(data.horaEntrada.horaEntrada_minute);
+
+          jQuery('#horaSalida_day').val(data.horaSalida.horaSalida_day);
+          jQuery('#horaSalida_month').val(data.horaSalida.horaSalida_month);
+          jQuery('#horaSalida_year').val(data.horaSalida.horaSalida_year);
+          jQuery('#horaSalida_hour').val(data.horaSalida.horaSalida_hour);
+          jQuery('#horaSalida_minute').val(data.horaSalida.horaSalida_minute);
+
           console.log(data);
         }
       }
@@ -135,6 +145,9 @@
       </div>
       <br/>
       <br/>
+      <div id="busqueda">
+         <h3> No se encontro el documento</h3>
+      </div>
       <div id="documentForm">
       <g:form controller="controlRecibo">
         <input type="hidden" name="id" id="id">
@@ -190,13 +203,13 @@
             <tr>
               <td>Hora Entrda </td>
               <td>
-                 <g:datePicker name="horaEntrada" id="horaEntrada" precision="minute" years="${1930..1970}"/>
+                 <g:datePicker name="horaEntrada" id="horaEntrada" precision="minute" years="${2014..2100}"/>
               </td>
               </tr>
               <tr>
               <td>Hora Salida </td>
               <td>
-                 <g:datePicker name="horaSalida" id="horaSalida"  precision="minute" years="${1930..1970}"/>
+                 <g:datePicker name="horaSalida" id="horaSalida"  precision="minute" years="${2014..2100}"/>
               </td>
             </tr>
             <tr>
