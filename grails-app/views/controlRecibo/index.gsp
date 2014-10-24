@@ -152,6 +152,7 @@
         <label>Documento</label>
         <g:textField id="strDocument" name="strDocument" />
         <button onclick="searchDocument()">Buscar Documento</button>
+        <button> <g:link controller="Documento" action="create">Nuevo Documento</g:link> </button>
       </div>
       <br/>
       <br/>

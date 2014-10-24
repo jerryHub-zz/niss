@@ -60,6 +60,8 @@ class ControlReciboController {
     def horaEntrada = params.horaEntrada
     def horaSalida = params.horaSalida
     def idDocumento = params.id
+    def identificacion = params.identificacion
+    println identificacion
 
     def documento = Documento.get(idDocumento)
     if (documento){
@@ -67,6 +69,8 @@ class ControlReciboController {
       if(recibo){
         recibo.entrada = horaEntrada
         recibo.salida = horaSalida
+
+
       }else{
         recibo = new Recibo(entrada: horaEntrada, salida: horaSalida, documento:documento, dateCreated:new Date() )
       }
@@ -76,4 +80,6 @@ class ControlReciboController {
     }
     redirect(action: 'index')
   }
+
+
 }
