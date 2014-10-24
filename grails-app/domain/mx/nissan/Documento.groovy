@@ -11,6 +11,7 @@ class Documento implements Serializable {
   String placas
   String caja1
   String caja2
+  String identificacion
 
   static constraints = {
     documento nullable: false
@@ -20,6 +21,7 @@ class Documento implements Serializable {
     placas nullable: true
     caja1 nullable: true
     caja2 nullable: true
+    identificacion nullable: true
   }
 
   static mapping = {
@@ -29,6 +31,7 @@ class Documento implements Serializable {
     tipoTransporte column: 'ID_TIPOTRANSPORTE'
     operador column: 'ID_OPERADOR'
     tag column: 'ID_TAG'
+    identificacion column: 'IDENTIFICACION', sqlType : 'blob'
 
     //id (generator:'org.hibernate.id.enhanced.SequenceStyleGenerator', params:[sequence:'TAG_SEQ'])
   }
