@@ -39,22 +39,34 @@ class DrawPathService{
 
   def drawTagHistory(def imgPath, def numTag){
     def tag = Tag.findByNumTag(numTag)
-    def historyTag = HistorialAntena.findAllByTag(tag)
+    def historyTag = HistorialAntena.findAllByTag(tag, [sort: 'fecha', order: 'asc'])
+    def pointsList = []
+    def linesPath = []
+    historyTag.eachWithIndex { historyEntry, index ->
+      pointsList.push([x: historyEntry.antena.posicionX.intValue(), y: historyEntry.antena.posicionY.intValue(), type: 'antenna'])
+      if(index < historyTag.size() - 1) {
+        def path = Ruta.findByOrigenAndDestino(historyEntry.antena, historyTag[index + 1].antena)
+        if(path && path.tramos.size() > 0){
+          path.tramos.sort{ it.orden}.each{ section ->
+            pointsList.push([x: section.posicionX.intValue(), y: section.posicionY.intValue(), type: 'corner'])
+          }
+        }
+      }
+    }
 
-    def listPoints = []
-    historyTag.sort{ it.fecha }.eachWithIndex{ historyLog, i ->
-      if(i < historyTag.size() - 1){
-        def pointB = historyTag[i + 1]
-        def points =  [a: [ x: historyLog.antena.posicionX.intValue(), y: historyLog.antena.posicionY.intValue()],
-          b: [ x: pointB.antena.posicionX.intValue(), y: pointB.antena.posicionY.intValue()], antena: historyLog.antena.localizacion ]
-        listPoints.push(points)
+    pointsList.eachWithIndex{ pointA, index ->
+      if(index < pointsList.size() - 1){
+        def pointB = pointsList[index + 1]
+        def line = [a: pointA, b: pointB]
+        linesPath.push(line)
       }
     }
 
     def mazeImage = new BufferedImage(IMG_WIDTH, IMG_HEIGTH , BufferedImage.TYPE_INT_RGB)
     def g2 = initializeGraphics(imgPath, mazeImage)
 
-    drawListOfPoints(g2, listPoints)
+    drawListOfPoints(g2, linesPath)
+    drawPointsCount(g2, pointsList.grep{ it.type == 'antenna' })
     def baos = new ByteArrayOutputStream()
     ImageIO.write( mazeImage, "png", baos)
     baos.flush()
@@ -74,20 +86,27 @@ class DrawPathService{
     g2
   }
 
-  def drawListOfPoints(def g2, def pointsList){
+  def drawListOfPoints(def g2, def linesPath){
     g2.setColor(Color.RED)
-    g2.setStroke(new BasicStroke(3,1,BasicStroke.JOIN_MITER))
+    g2.setStroke(new BasicStroke(2,1,BasicStroke.JOIN_MITER))
     def y = 10
     def count = 1
-    println pointsList.size
-    pointsList.each{ points ->
+    linesPath.each{ line ->
 
       g2.setColor(Color.RED)
-      g2.drawLine(points.a.x, points.a.y, points.b.x, points.b.y)
+      g2.drawLine(line.a.x, line.a.y, line.b.x, line.b.y)
       g2.setColor(Color.BLUE)
-      g2.drawString(count + "- Punto"+ points.antena, 100, y);
+     //g2.drawString(count + "- Punto"+ points.antena, 100, y);
       y+=15
       count++
+    }
+  }
+
+  def drawPointsCount(g2, def antennas){
+    g2.setFont(new Font("default", Font.BOLD, 16))
+    g2.setColor(Color.RED)
+    antennas.eachWithIndex{ antenna, i ->
+      g2.drawString((i+1).toString(), antenna.x, antenna.y)
     }
   }
 

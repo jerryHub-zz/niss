@@ -25,6 +25,12 @@
         <li>
           <g:link controller="Maps" >Mapa de la planta</g:link>
         </li>
+        <li>
+          <g:link controller="Ruta" >Rutas</g:link>
+        </li>
+        <li>
+          <g:link controller="Tramo" >Tramos</g:link>
+        </li>
       </ul>
 			<h1>Catalogos</h1>
 			<ul>
