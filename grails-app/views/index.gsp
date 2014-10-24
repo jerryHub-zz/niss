@@ -20,6 +20,12 @@
         </li>
       </ul>
       <br/>
+      <h1>Consulta</h1>
+      <ul>
+        <li>
+          <g:link controller="Maps" >Mapa de la planta</g:link>
+        </li>
+      </ul>
 			<h1>Catalogos</h1>
 			<ul>
         <li>
