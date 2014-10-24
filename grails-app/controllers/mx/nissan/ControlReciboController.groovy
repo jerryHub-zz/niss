@@ -37,7 +37,7 @@ class ControlReciboController {
           horaEntrada_hour :  date.getAt(Calendar.HOUR).toString().padLeft(2, '0'),
           horaEntrada_minute :  date.getAt(Calendar.MINUTE).toString().padLeft(2, '0')
         ]
-
+        date = recibo.salida
         def horaSalida = [
           horaSalida_day : date.getAt(Calendar.DAY_OF_MONTH),
           horaSalida_month : date.getAt(Calendar.MONTH)+1,
@@ -71,6 +71,7 @@ class ControlReciboController {
         recibo = new Recibo(entrada: horaEntrada, salida: horaSalida, documento:documento, dateCreated:new Date() )
       }
       println recibo.entrada
+      println recibo.salida
       recibo.save()
     }
     redirect(action: 'index')
