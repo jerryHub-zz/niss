@@ -78,15 +78,19 @@
       margin-top: 0;
       }
       }
+      #resultadoBusqueda {
+      display: none;
+      }
 
     </style>
   </head>
   <body>
     <script>
       function searchDocument(){
-       var strDoc = jQuery('#strDocument').val();
-       var docData;
-       ${ remoteFunction(action:'searchDocument',  params:'\'strDocument=\' + strDoc', onSuccess: 'loadDocument(data)') }
+        cleanForm()
+        var strDoc = jQuery('#strDocument').val();
+        var docData;
+        ${ remoteFunction(action:'searchDocument',  params:'\'strDocument=\' + strDoc', onSuccess: 'loadDocument(data)', failure: 'errorDocument()') }
       }
       function loadDocument(data){
         if(data.tag != null){
@@ -100,9 +104,25 @@
           jQuery('#caja1').val(data.caja1);
           jQuery('#caja2').val(data.caja2);
           jQuery('#tractor').val(data.tractor);
-          jQuery('#horaEntrada').datpicker("setDate", data.horaEntrada);
-          jQuery('#horaEntrada_month').val(1);
-          console.log(data);
+          if(data.horaEntrada){
+            jQuery('#horaEntrada_day').val(data.horaEntrada.horaEntrada_day);
+            jQuery('#horaEntrada_month').val(data.horaEntrada.horaEntrada_month);
+            jQuery('#horaEntrada_year').val(data.horaEntrada.horaEntrada_year);
+            jQuery('#horaEntrada_hour').val(data.horaEntrada.horaEntrada_hour);
+            jQuery('#horaEntrada_minute').val(data.horaEntrada.horaEntrada_minute);
+          }
+          if(data.horaSalida){
+            jQuery('#horaSalida_day').val(data.horaSalida.horaSalida_day);
+            jQuery('#horaSalida_month').val(data.horaSalida.horaSalida_month);
+            jQuery('#horaSalida_year').val(data.horaSalida.horaSalida_year);
+            jQuery('#horaSalida_hour').val(data.horaSalida.horaSalida_hour);
+            jQuery('#horaSalida_minute').val(data.horaSalida.horaSalida_minute);
+
+          }
+            jQuery('#resultadoBusqueda').hide();
+            console.log(data);
+        }else{
+            jQuery('#resultadoBusqueda').show('1000');
         }
       }
       function cleanForm(){
@@ -132,9 +152,13 @@
         <label>Documento</label>
         <g:textField id="strDocument" name="strDocument" />
         <button onclick="searchDocument()">Buscar Documento</button>
+        <button> <g:link controller="Documento" action="create">Nuevo Documento</g:link> </button>
       </div>
       <br/>
       <br/>
+      <div id="resultadoBusqueda" name="resultadoBusqueda">
+         <h3> No se encontro el documento</h3>
+      </div>
       <div id="documentForm">
       <g:form controller="controlRecibo">
         <input type="hidden" name="id" id="id">
@@ -188,15 +212,15 @@
               </td>
             </tr>
             <tr>
-              <td>Hora Entrda </td>
+              <td>Hora Entrada </td>
               <td>
-                 <g:datePicker name="horaEntrada" id="horaEntrada" precision="minute" years="${1930..1970}"/>
+                 <g:datePicker name="horaEntrada" id="horaEntrada" precision="minute" years="${2014..2100}"/>
               </td>
               </tr>
               <tr>
               <td>Hora Salida </td>
               <td>
-                 <g:datePicker name="horaSalida" id="horaSalida"  precision="minute" years="${1930..1970}"/>
+                 <g:datePicker name="horaSalida" id="horaSalida"  precision="minute" years="${2014..2100}"/>
               </td>
             </tr>
             <tr>

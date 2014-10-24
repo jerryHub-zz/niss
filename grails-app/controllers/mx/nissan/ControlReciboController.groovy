@@ -15,6 +15,7 @@ class ControlReciboController {
     if(document){
       docData = [
         id: document.id,
+        status: true,
         documento: document.documento,
         transportista: [ id: document.transportista.id, nombre: document.transportista.nombre ],
         tipoTransporte: [ id: document.tipoTransporte.id, nombre: document.tipoTransporte.nombre ],
@@ -27,13 +28,31 @@ class ControlReciboController {
       ]
       def recibo = Recibo.findByDocumento(document)
       if(recibo){
-        println "se recupero $recibo"
+        def date = recibo.entrada
 
-        docData.horaEntrada = recibo.entrada
+        def horaEntrada = [
+          horaEntrada_day : date.getAt(Calendar.DAY_OF_MONTH),
+          horaEntrada_month : date.getAt(Calendar.MONTH)+1,
+          horaEntrada_year :  date.getAt(Calendar.YEAR).toString().padLeft(2, '0'),
+          horaEntrada_hour :  date.getAt(Calendar.HOUR).toString().padLeft(2, '0'),
+          horaEntrada_minute :  date.getAt(Calendar.MINUTE).toString().padLeft(2, '0')
+        ]
+        date = recibo.salida
+        def horaSalida = [
+          horaSalida_day : date.getAt(Calendar.DAY_OF_MONTH),
+          horaSalida_month : date.getAt(Calendar.MONTH)+1,
+          horaSalida_year :  date.getAt(Calendar.YEAR).toString().padLeft(2, '0'),
+          horaSalida_hour :  date.getAt(Calendar.HOUR).toString().padLeft(2, '0'),
+          horaSalida_minute :  date.getAt(Calendar.MINUTE).toString().padLeft(2, '0')
+        ]
 
-        docData.horaSalida = recibo.salida
+        docData.horaEntrada = horaEntrada
+        docData.horaSalida = horaSalida
       }
+    }else{
+      docData.status = false
     }
+
     render docData as JSON
   }
 
@@ -41,7 +60,8 @@ class ControlReciboController {
     def horaEntrada = params.horaEntrada
     def horaSalida = params.horaSalida
     def idDocumento = params.id
-    println "hola $horaEntrada $horaSalida $idDocumento"
+    def identificacion = params.identificacion
+    println identificacion
 
     def documento = Documento.get(idDocumento)
     if (documento){
@@ -49,12 +69,17 @@ class ControlReciboController {
       if(recibo){
         recibo.entrada = horaEntrada
         recibo.salida = horaSalida
+
+
       }else{
         recibo = new Recibo(entrada: horaEntrada, salida: horaSalida, documento:documento, dateCreated:new Date() )
       }
-      println recibo
+      println recibo.entrada
+      println recibo.salida
       recibo.save()
     }
     redirect(action: 'index')
   }
+
+
 }
